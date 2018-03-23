@@ -1,0 +1,65 @@
+Operation en reporting systems
+
+Operation system: Online Transaction Processing (OLTP)
+* Support Buss proc.
+* Live op data
+
+
+
+Reporting system: Online Analytical Processing (OLAP)
+* Primary purpose: Analytics (you don't say)
+* Data is redundant opgeslagen for the sake of performance. Dit heet denormalization.
+* Denormalized data warehousing structure.
+* Star schema is zo'n voorbeeld.
+* Slaat zijn data op in een Data warhouse.
+* Data warehouse zijn er om te reporten over en analyseren van data/
+* Data Marts zijn een onderdeel van de warehouse. Zij zijn specifieker: voor één afdeling of gebruiker.
+
+Two approaches: top down & top up
+Top down: Marts are created from warehouse. -> 3NF ?
+    STAR SCHEMA IS TD
+Bottom uP: datamart first. Warehouse 2nd.
+
+ETL process: new data to OLAP: Extract, transform en load. Laden uit 1 of meer OLTP, transfomeer naar
+    warehouse structuur en laad in DWH.
+
+Dimensional modelling heeft twee soorten tabellen.
+    Dimension tables: beschrijft data die je wilt opslaan. Bijv: Per verkoop slaat de verkoper de date,
+        store, en werknemer op. Dit krijgen elk hun eigen categorie (tabel). Bijv store is: city,
+        region, state en country.
+    Fact tables: Heeft de data die in het rapport moet komen. Deze is gebasseerd op dimension tables.
+        Alle FK samen zijn de PK.
+
+Star schema heeft als voordeel dat de queries simpeler en sneller zijn. Als de queries wel in het OLTP
+    systeem gedraaid zouden worden, dan zouden deze complexe queries het systeem onnodig vertragen.
+Star schema heeft als nadeel de redundancy. De dimensie tabellen zorgen voor denormalizatie.
+    Voorbeeld: For example, "Vancouver" and "Victoria" both the cities are in the Canadian province of
+    British Columbia. The entries for such cities may cause data redundancy along the attributes
+    province_or_state and country.
+Conclusie: If we don’t have to worry about disk space and we take good care of data integrity, then
+the star schema is a viable first and best choice
+
+SNOWFLAKE
+Snowflake heeft in tegenstelling tot de star schema de mogelijkheid om de dimension tables te laten
+    branchen, iaw: ze kunnen hun eigen categorie hebben.
+Normalizatie is het tegenovergesteld van denormalisatie (jaja). Door de snowflake, minimaliseer
+    je deze redundancies. Je blijft namelijk net zolang doorgaan tot en met je dim tables genormali-
+    seerd zijn. Dit betekent niet dat je alles naar een rij tabellen gaat doen.
+
+    Voordelen Snowflake
+    * Data is meer gestructureerd, waardoor ook minder integriteitsproblemen.
+    * Er wordt minder diskspace gebruikt.
+
+    Nadelen Snowflake
+    * Complexere queries, waardoor minder performance
+
+    STARFLAKE (is combi):
+    Gebalanceerde approach.
+
+
+    CONCLUSIE:
+    Snowflake: Als je weinig ruimte hebt
+    Starschema: Als je een super leipe processor hebt
+
+    extra bij fowler: http://hillside.net/plop/plop98/final_submissions/P28.pdf
+    https://wiki.thm.de/Observation_Pattern

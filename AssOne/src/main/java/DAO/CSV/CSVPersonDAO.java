@@ -62,7 +62,7 @@ public class CSVPersonDAO implements IPersonDAO {
                 String birthdate = record.get(Headers.birthdate);
                 String studentnr = record.get(Headers.studentnr);
 
-                if(!id.equals("") && id != null && studentnr.equals(g)) {
+                if(!id.equals("") && id != null && studentnr.equals("")) {
                     Person p = new Person(id, name, gender, birthdate, studentnr);
                     aList.add(p);
                 }
