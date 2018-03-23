@@ -50,3 +50,5 @@ fabric.properties
 
 # NO TARGET
 */target/*
+
+*.iml
