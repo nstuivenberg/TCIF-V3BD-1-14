@@ -24,7 +24,7 @@ public class CSVObservationDAO implements IObservationDAO {
     public List<Observation> getAllObservations(String studentNumber, String fullName) {
         ArrayList<Observation> arrayList = new ArrayList<Observation>();
         try {
-            Reader in = new FileReader("csv/"+ studentNumber + "/temp."+ fullName +".csv");
+            Reader in = new FileReader("BD_opdr1/AssOne/csv/"+ studentNumber + "/temp."+ fullName +".csv");
             Iterable<CSVRecord> records = CSVFormat.RFC4180.withHeader(HeadersBP.class).parse(in);
 
 

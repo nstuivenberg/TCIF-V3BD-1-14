@@ -15,8 +15,8 @@ import java.util.ArrayList;
 
 public class CSVPersonDAO implements IPersonDAO {
 
-
-    private static String FILENAME = "csv/persons.csv";
+    //AssOne/csv
+    private static String FILENAME = "BD_opdr1/AssOne/csv/persons.csv";
 
     public enum Headers {
         id, name, gender, birthdate, studentnr

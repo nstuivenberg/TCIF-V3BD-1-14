@@ -8,6 +8,9 @@ public class AssOne {
 
     public static void main(String[] args) {
 
+        //String workingDir = System.getProperty("user.dir");
+        //System.out.println("Current working directory : " + workingDir);
+
         DAOFactory csvFactory = DAOFactory.getDAOFactory(DAOFactory.CSV);
         IPersonDAO  personDaoFact = csvFactory.getPersonDAO();
         List<Person> aList = personDaoFact.getAllPersonsByStudentId("1667775");
