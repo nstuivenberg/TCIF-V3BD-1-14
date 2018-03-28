@@ -31,8 +31,21 @@ public class Person {
     }
 
     public String toString() {
-        return "Dit is: " + this.getName();
+
+        String s = "Dit is: " + this.getName();
+        if(hasObservation()) {
+            s+= "\nHij heeft " + observations.size() + " observaties.";
+        }
+        return s;
     }
+
+    public void addMultipleObservation(List<Observation> oList) {
+        System.out.print("OBS: " + oList.size());
+        for(int i = 0; i < oList.size(); i++) {
+            this.addObservation(oList.get(i));
+        }
+    }
+
     public void addObservation(Observation o) {
         this.observations.add(o);
     }
@@ -40,6 +53,13 @@ public class Person {
     public boolean hasStudentNumber(String number) {
         if(number.equals(this.getStudentnr()))
         {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean hasObservation() {
+        if(this.observations.size() > 0) {
             return true;
         }
         return false;

@@ -11,6 +11,7 @@ public abstract class DAOFactory {
     public static final int CSV = 1;
 
     public abstract IPersonDAO getPersonDAO();
+    public abstract IObservationDAO getObservationDAO();
 
     public static DAOFactory getDAOFactory(int whichFactory) {
 

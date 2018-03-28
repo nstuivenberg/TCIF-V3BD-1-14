@@ -15,6 +15,10 @@ public abstract class Observation {
         this.setTimestamp("2015-01-01 01:00:00");
     }
 
+    public Observation(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
     public void setTimestamp(String t) {
         this.timestamp = t;
         this.setDate(timestamp);

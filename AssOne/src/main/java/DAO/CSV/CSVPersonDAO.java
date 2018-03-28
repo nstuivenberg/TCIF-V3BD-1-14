@@ -1,5 +1,7 @@
 package DAO.CSV;
 
+import DAO.DAOFactory;
+import DAO.IObservationDAO;
 import DAO.IPersonDAO;
 import model.Person;
 import org.apache.commons.csv.CSVFormat;
@@ -37,6 +39,7 @@ public class CSVPersonDAO implements IPersonDAO {
 
                 if(!id.equals("") && id != null ) {
                     Person p = new Person(id, name, gender, birthdate, studentnr);
+
                     aList.add(p);
                 }
             }
@@ -54,6 +57,8 @@ public class CSVPersonDAO implements IPersonDAO {
         try {
             Reader in = new FileReader(FILENAME);
             Iterable<CSVRecord> records = CSVFormat.RFC4180.withHeader(Headers.class).parse(in);
+
+            //System.out.println(records.spliterator().getExactSizeIfKnown());
             for (CSVRecord record : records) {
 
                 String id = record.get(Headers.id);
@@ -62,8 +67,19 @@ public class CSVPersonDAO implements IPersonDAO {
                 String birthdate = record.get(Headers.birthdate);
                 String studentnr = record.get(Headers.studentnr);
 
-                if(!id.equals("") && id != null && studentnr.equals("")) {
+                if(!id.equals("") && id != null && studentnr.equals(studentId)) {
                     Person p = new Person(id, name, gender, birthdate, studentnr);
+
+                    // Het probleem zit hem hier in de dat je meerdere observation types hebt.
+                    // Person moet dus een methode krijgen waar je een hele array in kan tieven.
+                    // Observation - Measurement - quantity - PhenType
+                    //Dit hoort hier niet??
+                    String fullName = p.getName().replaceAll("\\s+","");
+                    DAOFactory csvFactory = DAOFactory.getDAOFactory(DAOFactory.CSV);
+                    IObservationDAO observationDAO = csvFactory.getObservationDAO();
+                    p.addMultipleObservation(observationDAO.getAllObservations(studentId ,fullName));
+
+
                     aList.add(p);
                 }
             }
