@@ -40,7 +40,6 @@ public class Person {
     }
 
     public void addMultipleObservation(List<Observation> oList) {
-        System.out.print("OBS: " + oList.size());
         for(int i = 0; i < oList.size(); i++) {
             this.addObservation(oList.get(i));
         }
