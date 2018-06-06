@@ -15,6 +15,7 @@ public class AssOne {
         IPersonDAO  personDaoFact = csvFactory.getPersonDAO();
         List<Person> aList = personDaoFact.getAllPersonsByStudentId("1667775");
         System.out.println("je vader: " + aList.size());
+        System.out.println("Working Directory = " + System.getProperty("user.dir"));
 
         for(int i = 0; aList.size() > i; i++) {
             System.out.println(aList.get(i).toString());
