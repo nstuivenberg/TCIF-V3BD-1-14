@@ -51,3 +51,6 @@ fabric.properties
 # module AssOne
 AssOne/target
 AssOne/AssOne.iml
+\.idea/
+
+*.iml
