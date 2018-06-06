@@ -1,6 +1,8 @@
 import DAO.DAOFactory;
 import DAO.IPersonDAO;
 import model.Person;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class AssOne {
@@ -14,10 +16,17 @@ public class AssOne {
         DAOFactory csvFactory = DAOFactory.getDAOFactory(DAOFactory.CSV);
         IPersonDAO  personDaoFact = csvFactory.getPersonDAO();
         List<Person> aList = personDaoFact.getAllPersonsByStudentId("1667775");
-        System.out.println("je vader: " + aList.size());
+        //System.out.println("je vader: " + aList.size());
 
         for(int i = 0; aList.size() > i; i++) {
             System.out.println(aList.get(i).toString());
         }
+
+        //Person p = new Person("", "Name", "0", "date", "1667775");
+        //ArrayList<Person> personList = new ArrayList<Person>();
+        //personList.add(p);
+        DAOFactory sqlFactory = DAOFactory.getDAOFactory(DAOFactory.SQL);
+        IPersonDAO personDAOFact = sqlFactory.getPersonDAO();
+        personDAOFact.insertAllPersons(aList);
     }
 }

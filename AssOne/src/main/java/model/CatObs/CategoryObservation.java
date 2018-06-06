@@ -1,5 +1,7 @@
 package model.CatObs;
 
-public class CategoryObservation {
+import model.Observation;
+
+public class CategoryObservation extends Observation {
 
 }

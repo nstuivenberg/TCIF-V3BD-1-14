@@ -30,6 +30,22 @@ public class Person {
         return studentnr;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public List<Observation> getObservations() {
+        return observations;
+    }
+
     public String toString() {
 
         String s = "Dit is: " + this.getName();

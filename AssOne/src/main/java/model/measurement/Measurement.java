@@ -16,6 +16,13 @@ public class Measurement extends Observation {
         this.quantity = new Quantity(q);
     }
 
+    public Quantity getQuantity() {
+        return quantity;
+    }
+
+    public PhenomonType getPhenomonType() {
+        return phenomonType;
+    }
 
     public String toString() {
         return super.toString() + phenomonType.getName() + ", waarde: " + quantity.toString();

@@ -6,16 +6,17 @@ import DAO.IPersonDAO;
 import model.Person;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CSVPersonDAO implements IPersonDAO {
 
-    //AssOne/csv
     private static String FILENAME = "AssOne/csv/persons.csv";
 
     public enum Headers {
@@ -89,5 +90,9 @@ public class CSVPersonDAO implements IPersonDAO {
             i.printStackTrace();
         }
         return aList;
+    }
+
+    public void insertAllPersons(List<Person> personList) {
+        throw new NotImplementedException();
     }
 }

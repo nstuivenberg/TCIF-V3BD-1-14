@@ -39,6 +39,10 @@ public abstract class Observation {
         return fuckYeah;
     }
 
+    public String getTimestamp() {
+        return this.timestamp;
+    }
+
     public String toString() {
         Calendar c = Calendar.getInstance();
         c.setTime(this.getFuckYeah());
